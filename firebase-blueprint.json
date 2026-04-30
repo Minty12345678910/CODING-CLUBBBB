@@ -1,0 +1,56 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "A user of VolleyHub",
+      "type": "object",
+      "properties": {
+        "username": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string", "enum": ["player", "organizer"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["username", "email", "role"]
+    },
+    "Competition": {
+      "title": "Competition",
+      "description": "A volleyball tournament or league",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "location": { "type": "string" },
+        "tier": { "type": "string" },
+        "hostId": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "active", "completed"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "location", "tier", "hostId"]
+    },
+    "Application": {
+      "title": "Application",
+      "description": "A user's application to join a competition",
+      "type": "object",
+      "properties": {
+        "competitionId": { "type": "string" },
+        "playerId": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "accepted", "rejected"] },
+        "appliedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["competitionId", "playerId"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/competitions/{competitionId}": {
+      "schema": "Competition",
+      "description": "Hosted competitions"
+    },
+    "/competitions/{competitionId}/applications/{applicationId}": {
+      "schema": "Application",
+      "description": "Player applications for a competition"
+    }
+  }
+}

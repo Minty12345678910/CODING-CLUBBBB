@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --color-volleyball-red: #DC2626;
+  --color-volleyball-blue: #1E40AF;
+  --color-volleyball-sky: #3B82F6;
+  --color-volleyball-bg: #F8FAFC;
+  --color-volleyball-text: #0F172A;
+  --color-volleyball-slate: #64748B;
+  --color-volleyball-border: #E2E8F0;
+  
+  --font-sans: "Helvetica Neue", Arial, ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background-color: var(--color-volleyball-bg);
+  color: var(--color-volleyball-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+.section-title {
+  font-size: 42px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+
+.card-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+}
