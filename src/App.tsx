@@ -912,6 +912,9 @@ function CommunityActivity() {
     const q = query(collection(db, 'users'), orderBy('createdAt', 'desc'), limit(3));
     const unsubscribe = onSnapshot(q, (snapshot) => {
       setRecentPlayers(snapshot.docs.map(d => ({ id: d.id, ...d.data() })));
+    }, (error) => {
+      console.warn('CommunityActivity pulse unavailable:', error);
+      setRecentPlayers([]);
     });
     return () => unsubscribe();
   }, []);
